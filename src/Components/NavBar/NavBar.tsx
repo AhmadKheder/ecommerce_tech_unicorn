@@ -18,7 +18,7 @@ export default function NavBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" color="transparent" sx={{ flexGrow: 1 }}>
+      <AppBar position="static" color="transparent" >
         <Toolbar className={classes.toolBar}>
           <div>
             <Button color="inherit">Shop</Button>
