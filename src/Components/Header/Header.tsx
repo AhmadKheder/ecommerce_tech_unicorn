@@ -7,13 +7,7 @@ import useWindowDimensions from "../../Common/window";
 import CallCenter from "./CallCenter";
 import Shipping from "./Shipping";
 
-function getWindowDimensions() {
-  const { innerWidth: width, innerHeight: height } = window;
-  return {
-    width,
-    height,
-  };
-}
+
 export default function Header() {
   const classes = useStyles();
   const { height, width } = useWindowDimensions();
