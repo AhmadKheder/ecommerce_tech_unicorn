@@ -5,25 +5,28 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
+import { Product } from "../../Common/types";
 
-
-
-export default function ItemCard() {
+interface Props{
+  product: Product
+}
+export default function ItemCard(props: Props) {
+ const {title, category, image} = props.product;
   return (
     <Card sx={{ maxWidth: 345,  width:"100%", margin: "72px 104px" ,backgroundColor:"#E5E5E5"}}>
       <CardActionArea>
         <CardMedia
           component="img"
           height="300"
-          image="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+          image= {image}
           alt="green iguana"
         />
-        <CardContent>
+        <CardContent sx={{maxWidth:400,maxHeight:300}}>
           <Typography variant="body2" color="text.secondary">
-           Category
+           {category}
           </Typography>
-          <Typography gutterBottom variant="h3" component="div">
-            Lizard
+          <Typography gutterBottom variant="h6" component="div">
+            {title}
           </Typography>
         </CardContent>
       </CardActionArea>
