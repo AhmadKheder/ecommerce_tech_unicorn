@@ -1,5 +1,6 @@
 {
-  "name": "http://AhmadKheder.github.io/ecommerce_tech_unicorn",
+  "name": "Dealerz",
+  "homepage":"http://AhmadKheder.github.io/ecommerce_tech_unicorn",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
