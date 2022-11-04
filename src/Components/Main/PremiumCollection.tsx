@@ -15,8 +15,6 @@ export default function PremiumCollection() {
   const classes = useStyles();
   const { height, width } = useWindowDimensions();
 
-  console.log({ productsList });
-  console.log({ shownProducts });
 
   const fliterByCategoryHandler = (category: string) => {
     if(category === "all"){
@@ -32,7 +30,12 @@ export default function PremiumCollection() {
       setShownProducts(products);
     }
   };
-
+const getSortedProductsHandler=()=>{
+  axios.get(url).then((response) => {
+    setProductsList(response.data);
+    setShownProducts(response.data);
+  });
+}
   useEffect(() => {
       axios.get(url).then((response) => {
       setProductsList(response.data);
@@ -86,11 +89,11 @@ export default function PremiumCollection() {
             color="inherit"
             onClick={() => {
               setUrl("https://fakestoreapi.com/products?sort=desc");
+              getSortedProductsHandler()
             }}
           >
             Sort
           </Button>
-          {/* <Button color="inherit" onClick={()=>fliterByCategoryHandler("men's clothing")}>T-Shirt</Button> */}
         </div>
       </section>
 
