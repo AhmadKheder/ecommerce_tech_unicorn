@@ -1,13 +1,23 @@
-import * as React from 'react';
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
-import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import DirectionsIcon from '@mui/icons-material/Directions';
+import { useEffect, useState } from 'react';
+import { Product } from '../../Common/types';
+import axios from 'axios';
 
 export default function SearchBox() {
+  const [productsList, setProductsList] = useState<Product[] | null>(null);
+
+  const [searchTerm, setSearchTerm] = useState<string>('')
+
+  useEffect(() => {
+    axios.get("https://fakestoreapi.com/products").then((response) => {
+    setProductsList(response.data);
+   
+
+  });
+}, [searchTerm,productsList]);
   return (
     <Paper
       component="form"
@@ -18,11 +28,24 @@ export default function SearchBox() {
         sx={{ ml: 1, flex: 1 }}
         placeholder="Search Google Maps"
         inputProps={{ 'aria-label': 'search what you need' }}
+        onChange={(e)=>{setSearchTerm(e.target.value)
+          searchResult =   productsList?.filter((item: Product)=>{
+            if(searchTerm == ""){
+              return item
+            }else{
+              if(item.title.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())){
+                return item
+              }
+            }
+          })
+        // console.log({searchTerm})
+      }}
       />
-      <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
+      <IconButton type="button" sx={{ p: '10px' }} aria-label="search" >
         <SearchIcon />
       </IconButton>
      
     </Paper>
   );
 }
+export let searchResult : Product[]|  undefined 

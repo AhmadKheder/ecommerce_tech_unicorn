@@ -6,7 +6,7 @@ import useWindowDimensions from "../../Common/window";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Product } from "../../Common/types";
-
+import { searchResult } from "../NavBar/SearchBox";
 export default function PremiumCollection() {
   const [productsList, setProductsList] = useState<Product[] | null>(null);
   const [shownProducts, setShownProducts] = useState<Product[] | null>(null);
@@ -15,7 +15,7 @@ export default function PremiumCollection() {
   const classes = useStyles();
   const { height, width } = useWindowDimensions();
 
-
+console.log({searchResult})
   const fliterByCategoryHandler = (category: string) => {
     if(category === "all"){
     setShownProducts(productsList);
